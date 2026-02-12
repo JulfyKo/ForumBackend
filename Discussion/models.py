@@ -1,9 +1,9 @@
 from django.db import models
 
 # Create your models here.
-class Discussion(models.odel):
+class Discussion(models.Model):
     theme = models.CharField(max_length=250)
-    dateTimeOfCreation = models.DateField()
+    dateTimeOfCreation = models.DateTimeField(auto_now_add=True)
     userId = models.CharField(max_length=30)
 
 class Comment(models.Model):
