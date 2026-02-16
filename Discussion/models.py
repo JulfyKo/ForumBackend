@@ -8,9 +8,9 @@ class Discussion(models.Model):
 
 class Comment(models.Model):
     comm = models.CharField()
-    dateTimeOfCreation = models.DateField()
+    dateTimeOfCreation = models.DateTimeField(auto_now_add=True)
     userId = models.CharField(max_length=30)
 
     discussion = models.ForeignKey(Discussion, on_delete=models.CASCADE, related_name="commentaries")
     
-    parent = models.ForeignKey("self", on_delete=models.CASCADE, related_name="replies")  
+    parent = models.ForeignKey("self", on_delete=models.CASCADE, related_name="replies", null=True, blank=True)  
