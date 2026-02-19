@@ -1,13 +1,19 @@
 from django.db import models
 
 # Create your models here.
+class Community(models.Model):
+    name = models.CharField(max_length=30)
+    dateTimeOfCreation = models.DateTimeField(auto_now_add=True)
+
 class Discussion(models.Model):
     theme = models.CharField(max_length=250)
     dateTimeOfCreation = models.DateTimeField(auto_now_add=True)
     userId = models.CharField(max_length=30)
 
-class Comment(models.Model):
-    comm = models.CharField()
+    community = models.ForeignKey(Community, on_delete=models.CASCADE)
+
+class Comment(models.Model):    
+    comm = models.TextField()
     dateTimeOfCreation = models.DateTimeField(auto_now_add=True)
     userId = models.CharField(max_length=30)
 
