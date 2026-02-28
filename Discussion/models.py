@@ -2,7 +2,7 @@ from django.db import models
 
 class Community(models.Model):
     name = models.CharField(max_length=30)
-    dateTimeOfCreation = models.DateTimeField(auto_now_add=True)
+    creationDate = models.DateTimeField(auto_now_add=True)
 
 class Discussion(models.Model):
     theme = models.CharField(max_length=150)
@@ -14,7 +14,7 @@ class Discussion(models.Model):
 
 class Comment(models.Model):
     comm = models.TextField()
-    dateTimeOfCreation = models.DateTimeField(auto_now_add=True)
+    creationDate = models.DateTimeField(auto_now_add=True)
     userId = models.CharField(max_length=30)
 
     discussion = models.ForeignKey(Discussion, on_delete=models.CASCADE, related_name="commentaries")
